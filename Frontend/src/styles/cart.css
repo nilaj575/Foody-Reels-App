@@ -1,0 +1,136 @@
+@import "../theme.css";
+
+/* PAGE */
+.cart-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* HEADER */
+.cart-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.cart-header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* EMPTY */
+.cart-empty {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.cart-empty button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #1c7c54;
+  color: white;
+  font-weight: 700;
+}
+
+/* ITEMS */
+.cart-items {
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+  background: var(--input-bg);
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.cart-item img,
+.cart-item video {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #000;
+}
+
+/* INFO */
+.cart-info h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.cart-weight {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.cart-price {
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* FOOTER */
+.cart-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg-color);
+  border-top: 1px solid var(--input-border);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-footer span {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.checkout-btn {
+  background: #1c7c54;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 800;
+}
+.payment-method {
+  background: #f5f6fa;
+  padding: 16px;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.payment-method h4 {
+  margin-bottom: 10px;
+}
+
+.payment-method label {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 15px;
+}

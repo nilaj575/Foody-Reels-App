@@ -1,0 +1,36 @@
+/* UPDATE / REMOVE */
+.food-action-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.food-update-btn,
+.food-remove-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* UPDATE */
+.food-update-btn {
+  background: rgba(11, 121, 255, 0.15);
+  color: #0b79ff;
+}
+
+.food-update-btn:hover {
+  background: rgba(11, 121, 255, 0.25);
+}
+
+/* REMOVE */
+.food-remove-btn {
+  background: rgba(255, 77, 79, 0.15);
+  color: #ff4d4f;
+}
+
+.food-remove-btn:hover {
+  background: rgba(255, 77, 79, 0.25);
+}

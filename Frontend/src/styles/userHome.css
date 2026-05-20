@@ -1,0 +1,192 @@
+.user-home{
+  width:100%;
+  min-height:100vh;
+  background:#f5f5f5;
+  font-family:sans-serif;
+}
+
+/* HEADER */
+
+.home-header{
+  position:relative;
+  height:220px;
+  width:100%;
+}
+
+.home-header img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.profile-img{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  object-fit:cover;
+  cursor:pointer;
+}
+/* PROFILE ICON */
+
+.header-icons{
+  position:absolute;
+  top:15px;
+  right:20px;
+}
+
+/* PROFILE */
+
+.profile{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  overflow:visible;   /* important */
+  cursor:pointer;
+  position:relative;
+}
+
+.profile-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/* DROPDOWN */
+
+.profile-dropdown{
+  position:absolute;
+  top:50px;
+  right:0;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  overflow:hidden;
+  min-width:150px;
+  z-index:1000;   /* VERY IMPORTANT */
+}
+
+.profile-dropdown div{
+  padding:12px 18px;
+  cursor:pointer;
+}
+
+.profile-dropdown div:hover{
+  background:#f0f0f0;
+}
+
+/* SEARCH BAR */
+
+.search-bar{
+  position:absolute;
+  bottom:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+}
+
+.search-bar input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  font-size:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* SHOP LIST */
+
+.shop-list{
+  width:90%;
+  margin:auto;
+  margin-top:60px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+/* SHOP CARD */
+
+.shop-card{
+  width:100%;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.shop-card:hover{
+  transform:translateY(-6px);
+}
+
+/* IMAGE */
+
+.shop-img{
+  width:100%;
+  height:180px;
+  position:relative;
+}
+
+.shop-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.shop-name{
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:6px;
+  font-size:14px;
+}
+
+/* SHOP INFO */
+
+.shop-info{
+  padding:15px;
+}
+
+.shop-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.shop-top h3{
+  font-size:20px;
+}
+
+.rating{
+  background:#2ecc71;
+  color:#fff;
+  padding:3px 8px;
+  border-radius:6px;
+  font-size:13px;
+}
+
+.address{
+  color:#777;
+  margin-top:5px;
+}
+
+/* VISIT BUTTON */
+
+.reel-visit{
+  display:inline-block;
+  margin-top:12px;
+  background:#ff4d4d;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.reel-visit:hover{
+  background:#ff2e2e;
+}

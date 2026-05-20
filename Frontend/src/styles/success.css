@@ -1,0 +1,66 @@
+.success-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  text-align: center;
+}
+
+/* 🔥 Circle */
+.checkmark-circle {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Background circle */
+.background {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #4CAF50;
+  position: absolute;
+}
+
+/* Checkmark */
+.checkmark {
+  width: 25px;
+  height: 50px;
+  border-right: 5px solid white;
+  border-bottom: 5px solid white;
+  position: absolute;
+  top: 20px;
+  left: 35px;
+  transform: rotate(45deg) scale(0);
+  animation: drawCheck 0.5s ease forwards 0.3s;
+}
+
+/* Animation */
+@keyframes drawCheck {
+  to {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+/* Text */
+.success-page h2 {
+  margin: 10px 0;
+}
+
+.success-page p {
+  color: #666;
+}
+
+/* Button */
+.success-page button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #ff5a5f;
+  color: white;
+  cursor: pointer;
+}

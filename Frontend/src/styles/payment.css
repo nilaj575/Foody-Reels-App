@@ -1,0 +1,58 @@
+.payment-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.payment-page h2 {
+  margin-bottom: 20px;
+}
+
+/* UPI GRID */
+.upi-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.upi-btn {
+  flex: 1;
+  max-width: 120px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upi-btn:hover {
+  transform: scale(1.05);
+}
+
+/* BRAND COLORS */
+.gpay {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.phonepe {
+  background: #5f259f;
+  color: #fff;
+}
+
+.paytm {
+  background: #00baf2;
+  color: #fff;
+}
+
+/* OTHER BUTTON */
+.pay-btn {
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #ff5a5f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

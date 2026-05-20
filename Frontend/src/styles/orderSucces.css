@@ -1,0 +1,88 @@
+.success-page{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f4f6f8;
+}
+
+.success-card{
+  background:white;
+  padding:50px 60px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  animation:fadeIn 0.7s ease;
+}
+
+/* check animation */
+
+.check-container{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#2ecc71;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  animation:pop 0.4s ease;
+}
+
+.checkmark{
+  width:25px;
+  height:50px;
+  border-right:6px solid white;
+  border-bottom:6px solid white;
+  transform:rotate(45deg);
+  animation:drawCheck 0.5s ease forwards;
+}
+
+/* text */
+
+.success-title{
+  margin-top:25px;
+  font-size:28px;
+  font-weight:700;
+}
+
+.success-text{
+  margin-top:8px;
+  color:#555;
+}
+
+/* button */
+
+.home-btn{
+  margin-top:25px;
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 26px;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.home-btn:hover{
+  background:#1e4ed8;
+  transform:scale(1.05);
+}
+
+/* animations */
+
+@keyframes pop{
+  0%{transform:scale(0)}
+  100%{transform:scale(1)}
+}
+
+@keyframes drawCheck{
+  0%{opacity:0}
+  100%{opacity:1}
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px)}
+  to{opacity:1; transform:translateY(0)}
+}

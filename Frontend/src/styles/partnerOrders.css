@@ -1,0 +1,101 @@
+.partner-orders {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.items li {
+  padding: 4px 0;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+.status.preparing{
+  background-color: #d4edda;
+  color: #ff9800;
+}
+.status.ready{
+  background-color: azure;
+  color: #218838;
+}
+
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.accept {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.reject {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.accept:hover {
+  background: #218838;
+}
+
+.reject:hover {
+  background: #c82333;
+}
+.actions .prepare {
+  color: #ff9800;
+
+}
+
+.actions .ready {
+  color: #4caf50;
+  
+}

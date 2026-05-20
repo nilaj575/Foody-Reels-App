@@ -1,0 +1,285 @@
+/* =========================
+   CONTAINER
+========================= */
+.reels-container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  background: #000;
+}
+
+/* HIDE SCROLLBAR */
+.reels-container::-webkit-scrollbar,
+.comment-body::-webkit-scrollbar {
+  display: none;
+}
+
+.reels-container,
+.comment-body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* =========================
+   EACH REEL
+========================= */
+.reel-item {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  background: #000;
+  overflow: hidden;
+}
+
+/* VIDEO */
+.reel-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* =========================
+   RIGHT SIDE ICON STACK
+========================= */
+.reel-actions {
+  position: absolute;
+  right: 18px;
+  bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  z-index: 2;
+}
+
+.reel-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  opacity: 0.95;
+  cursor: pointer;
+}
+
+.reel-action span {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-btn svg {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-btn.liked {
+  color: #ff2d55;
+  animation: pop 0.25s ease;
+}
+
+.icon-btn.saved {
+  color: #ffffff;
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* =========================
+   BOTTOM OVERLAY
+========================= */
+.reel-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.reel-description {
+  max-width: 75%;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reel-visit {
+  background: #1a73e8;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reel-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.45) 80%
+  );
+  z-index: 1;
+}
+
+/* =========================
+   COMMENTS UI
+========================= */
+.comment-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.comment-sheet {
+  width: 100%;
+  max-width: 600px;
+  height: 80vh;
+  background: #121212;
+  border-radius: 18px 18px 0 0;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  animation: slideUp 0.25s ease-out;
+  overflow: hidden;
+  z-index: 10000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.comment-header {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.comment-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.comment-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.comment-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.comment-row img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-row b {
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.comment-meta {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+.comment-emojis {
+  display: flex;
+  justify-content: space-around;
+  font-size: 22px;
+  padding: 10px 6px;
+  border-top: 1px solid #222;
+  flex-shrink: 0;
+}
+
+.comment-input {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid #222;
+  background: #121212;
+  z-index: 10001;
+}
+
+
+.comment-input img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.comment-input input {
+  flex: 1;
+  background: #1f1f1f;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 14px;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+.comment-input button {
+  background: none;
+  border: none;
+  color: #5fdb1c;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.comment-input button:hover {
+  transform: scale(1.2);
+}
