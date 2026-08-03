@@ -8,6 +8,9 @@ const razorpay = new Razorpay({
 });
 
 
+// Log presence of keys (do not log secret value)
+console.log("Razorpay key present:", !!process.env.RAZORPAY_KEY);
+
 // CREATE PAYMENT ORDER
 exports.createPayment = async (req, res) => {
   try {
@@ -39,8 +42,14 @@ exports.createPayment = async (req, res) => {
       });
     }
 
+    // Validate amount
+    const amount = Number(order.totalAmount);
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return res.status(400).json({ success: false, message: "Invalid order amount" });
+    }
+
     const razorpayOrder = await razorpay.orders.create({
-      amount: order.totalAmount * 100, // convert to paisa
+      amount: Math.round(amount * 100), // convert to paisa
       currency: "INR",
       receipt: orderId,
       payment_capture: 1
@@ -53,7 +62,13 @@ exports.createPayment = async (req, res) => {
     });
 
   } catch (error) {
+    // If Razorpay returned a structured error, forward useful details
     console.error("Payment creation error:", error);
+    if (error && error.statusCode) {
+      const status = error.statusCode || 500;
+      const body = error.error || { message: error.message };
+      return res.status(status).json({ success: false, ...body });
+    }
     res.status(500).json({
       success: false,
       message: "Payment order creation failed"

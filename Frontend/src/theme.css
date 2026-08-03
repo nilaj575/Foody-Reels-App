@@ -1,22 +1,31 @@
-:root{
-  --bg-color: #ffffff;
-  --text-color: #0b1220;
-  --input-bg: #e8eaf0;
-  --input-border: #e3e6ee;
-  --button-bg: #0b79ff;
-  --button-text: #ffffff;
-  --button-hover: #095fd1;
-  --border-radius: 12px;
-  --padding: 16px;
-  --margin: 8px;
+:root {
+    --bg-color: #fffaf6;
+    --text-color: #1f2328;
+    --input-bg: #ffffff;
+    --input-border: #f0ded0;
+    --button-bg: linear-gradient(135deg, #ff8a3d 0%, #ff5252 100%);
+    --button-text: #ffffff;
+    --button-hover: #ff6b35;
+    --accent: #ff6b35;
+    --accent-soft: rgba(255, 107, 53, 0.12);
+    --card-shadow:
+        0 20px 45px rgba(255, 107, 53, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04);
+    --border-radius: 16px;
+    --padding: 16px;
+    --margin: 8px;
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg-color: #0b0f14;
-    --text-color: #e6eef8;
-    --input-bg: #021015;   /* ← very dark */
-    --input-border: #1f2933;
-    --button-bg: #02070d;
-  }
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #14100f;
+        --text-color: #f4ece6;
+        --input-bg: #1f1917;
+        --input-border: #35281f;
+        --button-bg: linear-gradient(135deg, #ff8a3d 0%, #ff5252 100%);
+        --button-hover: #ff6b35;
+        --accent: #ff8a5c;
+        --accent-soft: rgba(255, 138, 92, 0.16);
+        --card-shadow:
+            0 20px 45px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
 }
