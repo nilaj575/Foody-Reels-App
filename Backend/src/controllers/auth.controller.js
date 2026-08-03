@@ -164,7 +164,7 @@ async function registerFoodPartner(req,res) {
     },process.env.jwt_secret);
     const isProduction = process.env.NODE_ENV === "production";
 
-res.cookie("token", token, {
+res.cookie("foodPartnerToken", token, {
     httpOnly: true,
     secure: isProduction,
     sameSite: isProduction ? "none" : "lax",
@@ -237,7 +237,7 @@ res.cookie("foodPartnerToken",token,{
 }
 
 function logoutFoodPartner(req,res){
-    res.clearCookie("token");
+    res.clearCookie("foodPartnerToken");
     res.status(200).json({
         message:"Food partner logged out successfully"
     })    

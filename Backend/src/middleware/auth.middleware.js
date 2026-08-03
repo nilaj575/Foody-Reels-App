@@ -5,9 +5,12 @@ const userModel = require('../models/user.model');
 /* ================= FOOD PARTNER AUTH ================= */
 async function authFoodPartnerMiddleware(req, res, next) {
   try {
+    console.log("========== PARTNER AUTH ==========");
+    console.log("Cookies:", req.cookies);
+    console.log("Cookie Header:", req.headers.cookie);
     const token = req.cookies.foodPartnerToken;
 
-    
+    console.log("Food Partner Token:", token);
 
     if (!token) {
       return res.status(401).json({
