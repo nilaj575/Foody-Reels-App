@@ -45,12 +45,14 @@ async function registerUser(req,res) {
     const token=jwt.sign({
         id:user._id,
     },process.env.jwt_secret);
-    res.cookie("token",token,{
-        httpOnly: true,
-  secure: false,
-  sameSite: 'lax',     // 'lax' is OK for same-site ports; use 'none' + secure:true for cross-site
-  maxAge: 24 * 60 * 60 * 1000
-    })
+    const isProduction = process.env.NODE_ENV === "production";
+
+res.cookie("token", token, {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    maxAge: 24 * 60 * 60 * 1000,
+});
 
     res.status(201).json({
         message:"OTP sent to email. Please verify your account",
@@ -93,11 +95,14 @@ async function loginUser(req,res){
         const token=jwt.sign({
         id:user._id,
     },process.env.jwt_secret);
-    res.cookie("token",token,{
+    const isProduction = process.env.NODE_ENV === "production";
+
+res.cookie("token", token, {
     httpOnly: true,
-    secure: false,     // true in production (HTTPS)
-    sameSite: "lax",   // IMPORTANT
-    });
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    maxAge: 24 * 60 * 60 * 1000,
+});
 
 
         res.status(200).json({
@@ -157,12 +162,14 @@ async function registerFoodPartner(req,res) {
     const token=jwt.sign({
         id:foodPartner._id,
     },process.env.jwt_secret);
-    res.cookie("token",token,{
-        httpOnly: true,
-  secure: false,
-  sameSite: 'lax',     // 'lax' is OK for same-site ports; use 'none' + secure:true for cross-site
-  maxAge: 24 * 60 * 60 * 1000
-    })
+    const isProduction = process.env.NODE_ENV === "production";
+
+res.cookie("token", token, {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    maxAge: 24 * 60 * 60 * 1000,
+});
 
     res.status(201).json({
         message:"OTP sent to email. Please verify your account.",
@@ -209,7 +216,9 @@ async function loginFoodPartner(req,res) {
     },process.env.jwt_secret,
     { expiresIn: "7d" }
 );
-    res.cookie("foodPartnerToken",token,{
+    const isProduction = process.env.NODE_ENV === "production";
+
+res.cookie("foodPartnerToken",token,{
   httpOnly: true,
   sameSite: "lax",
   secure: false,
