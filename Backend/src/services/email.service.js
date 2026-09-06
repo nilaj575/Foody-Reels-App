@@ -30,6 +30,29 @@ const fallbackTransporter = emailPort === 587
   : null;
 
 async function sendMail(message) {
+  if (process.env.RESEND_API_KEY) {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.EMAIL_FROM || emailUser,
+        to: [message.to],
+        subject: message.subject,
+        text: message.text,
+      }),
+    });
+
+    if (!response.ok) {
+      const details = await response.text();
+      throw new Error(`Resend rejected email (${response.status}): ${details}`);
+    }
+
+    return response.json();
+  }
+
   try {
     return await transporter.sendMail(message);
   } catch (error) {
