@@ -40,7 +40,15 @@ async function registerUser(req,res) {
         otpExpiry: Date.now() + 5 * 60 * 1000, // 5 minutes
     })
 
-    await sendOTP(email,otp);
+    try {
+        await sendOTP(email,otp);
+    } catch (emailError) {
+        await Usermodel.deleteOne({ _id: user._id });
+        console.error("USER OTP EMAIL ERROR:", emailError);
+        return res.status(503).json({
+            message: "Unable to send OTP right now. Please try again."
+        });
+    }
 
     const token=jwt.sign({
         id:user._id,
@@ -220,8 +228,8 @@ async function loginFoodPartner(req,res) {
 
 res.cookie("foodPartnerToken",token,{
   httpOnly: true,
-  sameSite: "lax",
-  secure: false,
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
    maxAge: 7 * 24 * 60 * 60 * 1000, 
 });
 

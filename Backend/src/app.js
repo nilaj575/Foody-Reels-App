@@ -9,11 +9,12 @@ const paymentRoutes=require('./routes/payment.routes');
 const partnerOrderRoutes = require('./routes/partnerOrder.routes');
 const cors=require('cors');
 
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 app.use(cookieParser());
 app.use(express.json());
 
-app.use(cors({ origin:'http://localhost:5173',credentials:true}));
+app.use(cors({ origin: frontendUrl, credentials: true }));
 
 app.use(express.urlencoded({ extended: true }));
 
