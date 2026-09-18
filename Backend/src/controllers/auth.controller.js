@@ -46,7 +46,7 @@ async function registerUser(req,res) {
         await Usermodel.deleteOne({ _id: user._id });
         console.error("USER OTP EMAIL ERROR:", emailError);
         return res.status(503).json({
-            message: "Unable to send OTP right now. Please try again."
+            message: "Unable to send OTP. Verify EMAIL_FROM in Resend and try again."
         });
     }
 

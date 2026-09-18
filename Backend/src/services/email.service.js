@@ -2,70 +2,21 @@ const nodemailer = require("nodemailer");
 
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS?.replace(/\s+/g, "");
-const emailPort = Number(process.env.EMAIL_PORT || 587);
-
-function createTransporter(port, secure) {
-  return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST || "smtp.gmail.com",
-    port,
-    secure,
-    requireTLS: !secure,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
-    auth: {
-      user: emailUser,
-      pass: emailPass,
-    },
-  });
-}
-
-const transporter = createTransporter(
-  emailPort,
-  process.env.EMAIL_SECURE === "true"
-);
-
-const fallbackTransporter = emailPort === 587
-  ? createTransporter(465, true)
-  : null;
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 15000,
+  auth: {
+    user: emailUser,
+    pass: emailPass,
+  },
+});
 
 async function sendMail(message) {
-  if (process.env.RESEND_API_KEY) {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: process.env.EMAIL_FROM || emailUser,
-        to: [message.to],
-        subject: message.subject,
-        text: message.text,
-      }),
-    });
-
-    if (!response.ok) {
-      const details = await response.text();
-      throw new Error(`Resend rejected email (${response.status}): ${details}`);
-    }
-
-    return response.json();
-  }
-
-  try {
-    return await transporter.sendMail(message);
-  } catch (error) {
-    if (!fallbackTransporter) throw error;
-
-    console.error("Primary SMTP attempt failed:", {
-      code: error.code,
-      command: error.command,
-      responseCode: error.responseCode,
-      message: error.message,
-    });
-    return fallbackTransporter.sendMail(message);
-  }
+  return transporter.sendMail(message);
 }
 
 async function sendOTP(email, otp) {
