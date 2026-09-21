@@ -16,7 +16,7 @@ import Saved from "../pages/general/save";
 import SavedReels from "../pages/user/saveReels";
 import Cart from "../pages/food-partner/Cart";
 import FoodProfile from "../pages/food-partner/foodProfile"
-import UpdateFood from "../pages/food-partner/updatefood";
+import UpdateFood from "../pages/food-partner/updateFood";
 import Payment  from "../pages/user/payment";
 import PartnerOrders from "../pages/food-partner/order";
 import Success from "../pages/succes";
